@@ -1,0 +1,159 @@
+@use '../abstracts/mixins' as mxn;
+@use '../abstracts/variables'as var;
+
+.services{
+  width: calc(100% - 48px);
+  max-width: 1872px;
+  margin: 0 auto;
+  border-radius: 30px;
+  background: var.$own-colors-white;
+  padding: 60px 25px 60px 25px;
+  margin-bottom: 12px;
+  .container-fluid{
+    .row .col-lg-6:nth-child(1){
+      p{
+        font-family: var.$font-family;
+        font-weight: 500;
+        font-size: 16px;
+        letter-spacing: -0.07em;
+        color: var.$text-colors-light-blue;
+      }
+    }
+
+    .row .col-lg-6:nth-child(2){
+      margin-bottom: 38px !important;
+
+      h2{
+        font-family: var.$font-family;
+        font-weight: 500;
+        font-size: 64px;
+        line-height: 90%;
+        letter-spacing: -0.07em;
+        color: var.$own-colors-blue;
+        margin-bottom: 12px;
+      }
+      p{
+        font-family: var.$font-family;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 125%;
+        letter-spacing: -0.07em;
+        color: var.$own-colors-blue;
+        margin-bottom: 12px;
+      }
+      a{
+        text-decoration: none;
+        font-family: var.$font-family;
+        font-weight: 500;
+        font-size: 20px;
+        text-transform: capitalize;
+        color: var.$own-colors-blue;
+        position: relative;
+        transition: width 0.3s ease;
+
+
+        &:hover{
+          opacity: 50%;
+
+          &::after {
+            width: 100%; // При наведении линия расширяется до 100% ширины
+          }
+        }
+
+        &::after {
+          width: 100%;
+          content: '';
+          position: absolute;
+          bottom: -2px;
+          left: 0;
+          height: 2px;
+          background-color: var.$own-colors-blue;
+          transition: width 0.3s ease;
+        }
+
+      }
+    }
+    }
+}
+
+.cards-book{
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  transition: transform 0.3s ease; // Для плавного переключения
+  flex-wrap: nowrap;
+}
+
+.diagnostic-card{
+  border-radius: 30px;
+  padding: 24px;
+  width: 438px;
+  height: 557px;
+  background: linear-gradient(143deg, #19b5e1 0%, #00b0e0 100%);
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 30px;
+
+
+
+
+
+  h4{
+   @include mxn.heading-4-style
+  }
+  p{
+    font-family: var.$font-family;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 125%;
+    letter-spacing: -0.07em;
+    color: var.$own-colors-white;
+  }
+  .diagnostic-card-image{
+    position: absolute;
+    right: -45px;
+    bottom: -10px;
+    height: 65%;
+    width: 100%;
+  }
+}
+
+
+.carousel-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  height: 100%;
+}
+
+
+
+.carousel-navigation {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+
+
+  button {
+    width: 50px;
+    height: 63px;
+    border-radius: 50%;
+    border: 2px solid var.$own-colors-blue;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 24px;
+    color: var.$own-colors-blue;
+
+    &:hover {
+      background-color: rgba(25, 181, 225, 0.1);
+    }
+  }
+}
+
+
+
+

@@ -1,0 +1,297 @@
+@use '../abstracts/mixins' as mxn;
+@use '../abstracts/variables'as var;
+
+// Медиа-запросы
+$breakpoints: (
+        xs: 320px,
+        sm: 576px,
+        md: 768px,
+        lg: 992px,
+        xl: 1200px,
+        xxl: 1400px
+);
+
+@mixin respond-to($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (max-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @media (max-width: $breakpoint) {
+      @content;
+    }
+  }
+}
+
+.main-banner {
+  border-radius: 30px;
+  width: calc(100% - 48px);
+  max-width: 1872px;
+  margin: 0 auto;
+  margin-bottom: 12px;
+  background-image: url("../images/background-blue gradient.png");
+  overflow: hidden; // Предотвращает выход контента за границы
+
+  @include respond-to(md) {
+    border-radius: 20px;
+    width: calc(100% - 32px);
+  }
+
+  @include respond-to(sm) {
+    border-radius: 15px;
+    width: calc(100% - 24px);
+  }
+}
+
+.banner-container {
+  border-radius: 30px;
+  width: 100%;
+  height: 100%;
+  background-image: url("../images/Group 9269.png");
+  background-position: left;
+  background-repeat: no-repeat;
+  background-size: auto;
+  position: relative;
+  overflow: hidden; // Предотвращает выход контента за границы
+
+  @include respond-to(md) {
+    border-radius: 20px;
+    background-position: center;
+    background-size: cover;
+  }
+
+  @include respond-to(sm) {
+    border-radius: 15px;
+  }
+
+  .container-fluid {
+    padding: 0; // Убираем стандартные отступы контейнера
+
+    .row {
+      margin: 0; // Убираем отрицательные маржины строки
+    }
+  }
+
+  .container-fluid .row .col-lg-6:nth-child(1) {
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+
+    @media (max-width: 992px) {
+      min-height: 250px; // Уменьшаем минимальную высоту
+      max-height: 300px; // Ограничиваем максимальную высоту
+    }
+
+    @include respond-to(md) {
+      min-height: 200px; // Уменьшаем еще больше для маленьких экранов
+      max-height: 250px;
+    }
+
+    .video-background {
+      position: absolute;
+      top: -250px;
+      left: -550px;
+      width: 150%;
+      height: 180%;
+      border-radius: 50%;
+      overflow: hidden;
+      z-index: 1;
+
+      @include respond-to(xxl) {
+        top: -200px;
+        left: -400px;
+      }
+
+      @include respond-to(xl) {
+        top: -150px;
+        left: -350px;
+        width: 140%;
+        height: 160%;
+      }
+
+      @media (max-width: 992px) {
+        top: -100px;
+        left: -200px;
+        width: 130%;
+        height: 150%;
+        border-radius: 0;
+      }
+
+      @include respond-to(md) {
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 20px 20px 0 0;
+      }
+    }
+
+    .video-background video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+      z-index: -1;
+
+      @include respond-to(md) {
+        position: relative;
+        height: 100%;
+        min-height: 250px;
+      }
+
+      @include respond-to(sm) {
+        min-height: 200px; // Уменьшаем для маленьких экранов
+      }
+    }
+  }
+
+  .container-fluid .row .col-lg-6:nth-child(2) {
+    padding: 120px 80px 80px 0; // Уменьшаем большие отступы
+
+    @include respond-to(xxl) {
+      padding: 100px 70px 70px 0;
+    }
+
+    @include respond-to(xl) {
+      padding: 80px 50px 60px 0;
+    }
+
+    @media (max-width: 992px) {
+      padding: 40px 30px; // Значительно уменьшаем отступы
+    }
+
+    @include respond-to(md) {
+      padding: 30px 25px; // Еще меньше для планшетов
+      text-align: center;
+    }
+
+    @include respond-to(sm) {
+      padding: 20px 15px; // Минимальные отступы для мобильных
+    }
+
+    h1 {
+      font-family: var.$font-family;
+      font-weight: 500;
+      font-size: 120px; // Уменьшаем размер шрифта по умолчанию
+      line-height: 90%;
+      letter-spacing: -0.07em;
+      color: var.$own-colors-white;
+      margin-bottom: 20px;
+
+      @include respond-to(xxl) {
+        font-size: 110px;
+      }
+
+      @include respond-to(xl) {
+        font-size: 90px;
+      }
+
+      @media (max-width: 992px) {
+        max-width: 544px;
+        font-size: 50px;
+      }
+
+      @include respond-to(md) {
+        max-width: 476px;
+        font-size: 50px;
+        margin-bottom: 15px;
+      }
+
+      @include respond-to(sm) {
+        font-size: 40px;
+        line-height: 95%;
+        margin-bottom: 10px;
+      }
+
+      @include respond-to(xs) {
+        font-size: 32px;
+      }
+    }
+
+    p {
+      text-align: start;
+      font-family: var.$font-family;
+      font-weight: 400;
+      font-size: 18px; // Уменьшаем размер
+      line-height: 125%;
+      max-width: 332px;
+      letter-spacing: -0.05em; // Уменьшаем межбуквенный интервал
+      color: var.$own-colors-white;
+      margin-bottom: 20px;
+
+      @media (max-width: 992px) {
+        text-align: center;
+        font-size: 16px;
+      }
+
+      @include respond-to(md) {
+        max-width: 250px;
+        text-align: center;
+        font-size: 14px;
+        margin-bottom: 15px;
+      }
+
+      @include respond-to(sm) {
+        font-size: 13px;
+        margin-bottom: 12px;
+      }
+    }
+
+    .main-banner-link {
+      border-radius: 15px;
+      padding: 12px 40px; // Уменьшаем отступы кнопки
+      background: var.$own-colors-white;
+      font-family: var.$font-family;
+      font-weight: 500;
+      font-size: 20px; // Уменьшаем размер
+      color: var.$own-colors-blue;
+      text-decoration: none;
+      transition: background 0.3s ease;
+      display: inline-block;
+
+      @media (max-width: 992px) {
+        font-size: 18px;
+        padding: 10px 35px;
+      }
+
+      @include respond-to(md) {
+        font-size: 16px;
+        padding: 8px 30px;
+      }
+
+      @include respond-to(sm) {
+        font-size: 14px;
+        padding: 7px 25px;
+        border-radius: 10px;
+      }
+
+      &:hover {
+        background: var.$own-colors-blue;
+        opacity: 0.7;
+        color: white;
+      }
+    }
+  }
+
+  // Исправление структуры строки для 992px и ниже
+  @media (max-width: 992px) {
+    .container-fluid .row {
+      flex-direction: column;
+      margin: 0; // Убираем отрицательные маржины
+
+      .col-lg-6 {
+        width: 100%;
+        max-width: 100%;
+        flex: 0 0 100%;
+        padding-left: 0; // Убираем стандартные отступы Bootstrap
+        padding-right: 0;
+      }
+    }
+  }
+}

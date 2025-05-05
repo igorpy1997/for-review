@@ -1,0 +1,38 @@
+@use '../abstracts/mixins' as mxn;
+@use '../abstracts/variables'as var;
+
+.diagnostic-process {
+  padding-top: 60px;
+  width: calc(100% - 48px);
+  max-width: 1872px;
+  margin: 0 auto;
+  border-radius: 30px;
+  background: var.$own-colors-white;
+
+  .container-fluid {
+    .row:nth-child(1) {
+      padding-left: 25px;
+      .col-lg-6:nth-child(1) {
+        p {
+          @include mxn.text-mini;
+        }
+      }
+
+      .col-lg-6:nth-child(2) {
+        h3{
+          @include mxn.heading-large();
+        }
+        p{
+          @include mxn.text-standard();
+          max-width: 444px;
+          margin-bottom: 12px;
+        }
+        a{
+          @include mxn.styled-button-a();
+          margin-bottom: 24px;
+        }
+      }
+
+    }
+  }
+}

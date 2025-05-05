@@ -1,0 +1,81 @@
+@use '../abstracts/mixins' as mxn;
+@use '../abstracts/variables'as var;
+
+.cases {
+  width: calc(100% - 48px);
+  max-width: 1872px;
+  margin: 0 auto;
+  border-radius: 30px;
+  background: var.$own-colors-white;
+  margin-bottom: 12px;
+  padding-bottom: 35px;
+  .container-fluid .row .col-lg-6:nth-child(1){
+    padding: 60px 570px 199px 25px;
+    p{
+      @include mxn.text-mini
+    }
+  }
+
+  .container-fluid .row .col-lg-6:nth-child(2) {
+    padding: 60px 470px 24px 0;
+    h3{
+      @include mxn.heading-large
+    }
+    .case-paragraph-start{
+      @include mxn.text-standard
+    }
+    .case-link-start{
+      @include mxn.styled-button-a
+    }
+  }
+
+}
+
+.accordion-cases{
+  .row{
+    border-radius: 30px;
+    background: linear-gradient(180deg, #19b5e1 0%, #0090b8 100%);
+    margin-bottom: 12px;
+    .col-lg-6:nth-child(1){
+      padding: 24px 0 24px 112px !important;
+      .image-container{
+        border-radius: 25px;
+        width: 800px;
+        height: 434px;
+        padding: 0; // обязательно
+        margin: 0;
+        overflow: hidden;
+        img{
+          width: 100%;
+          height: 100%;
+          object-fit: cover; // чтобы не растягивалась некрасиво
+          display: block;
+        }
+        .edit-btn{
+          position: absolute;
+          top: 100px;
+          z-index: 5;
+        }
+      }
+
+    }
+
+    .col-lg-6:nth-child(2){
+
+      h4{
+        @include mxn.heading-4-style;
+        margin-bottom: 12px;
+      }
+      p{
+        @include mxn.text-standard(var.$own-colors-white);
+        margin-bottom: 243px !important;
+      }
+      .case-link{
+        @include mxn.styled-button-a(var.$own-colors-white);
+      }
+
+    }
+
+  }
+
+}

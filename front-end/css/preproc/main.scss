@@ -1,0 +1,32 @@
+// Main file: main.scss
+// This file uses the modern Sass module system
+
+// Import Sass built-in modules
+@use 'sass:color';
+@use 'sass:math';
+
+// First load the abstract layer (variables, mixins, extensions)
+@forward 'abstracts/mixins';
+
+//@use 'base/reset';
+// Use abstracts components (already forwarded above)
+@use 'abstracts/mixins' as mix;
+
+// Base css
+
+
+// Layout components
+
+
+
+@use 'layout/header';
+@use 'layout/edit-tools';
+@use 'layout/main-banner';
+@use 'layout/about-us';
+@use 'layout/diagnostic';
+@use 'layout/cases';
+@use 'layout/accordion';
+@use 'layout/diagnostic-process';
+
+
+

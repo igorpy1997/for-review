@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Admin Login</title>
+    <style>
+        body {
+            font-family: 'Inter', 'Lato', 'Plus Jakarta Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #ebfbff; /* Ваш own-colors-light-blue-background */
+        }
+
+        .login-container {
+            background-color: white; /* Ваш own-colors-white */
+            border-radius: 30px; /* Соответствует вашему стилю скругления */
+            box-shadow: 0 14px 28px rgba(0, 157, 201, 0.15), 0 10px 10px rgba(0, 157, 201, 0.12);
+            padding: 40px;
+            width: 400px;
+            max-width: 90%;
+            text-align: center;
+        }
+
+        .login-container h1 {
+            margin: 0 0 30px 0;
+            color: #009dc9; /* Ваш own-colors-blue */
+            font-size: 28px;
+            font-weight: 500;
+        }
+
+        .form-group {
+            position: relative;
+            margin-bottom: 25px;
+            width: 100%;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 15px 15px;
+            border: none;
+            background-color: #ebfbff; /* Ваш own-colors-light-blue-background */
+            border-radius: 15px; /* Соответствует вашему стилю скругления */
+            font-size: 16px;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            background-color: #fff;
+            box-shadow: 0 0 0 2px #1bb3dd; /* Ваш own-colors-input-field */
+        }
+
+        .login-button {
+            background-color: #009dc9; /* Ваш own-colors-blue */
+            color: white;
+            border: none;
+            border-radius: 15px; /* Соответствует вашему стилю скругления */
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            font-weight: 500;
+            margin: 10px 2px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .login-button:hover {
+            background-color: #1bb3dd; /* Ваш own-colors-input-field */
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0, 157, 201, 0.2);
+        }
+
+        .login-button:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 5px rgba(0, 157, 201, 0.2);
+        }
+
+        .back-button {
+            color: rgba(0, 157, 201, 0.8); /* Ваш text-colors-light-blue */
+            text-decoration: none;
+            margin-top: 15px;
+            display: inline-block;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+
+        .back-button:hover {
+            color: #009dc9; /* Ваш own-colors-blue */
+        }
+
+        .error-message {
+            color: #ff4757; /* Красный, подходящий к вашей цветовой схеме */
+            margin-top: 20px;
+            display: none;
+        }
+
+        .success-message {
+            color: #1bb3dd; /* Ваш own-colors-input-field */
+            margin-top: 20px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Admin Login</h1>
+        <form id="login-form">
+            <div class="form-group">
+                <input type="text" id="username" placeholder="Username" required>
+            </div>
+            <div class="form-group">
+                <input type="password" id="password" placeholder="Password" required>
+            </div>
+            <button type="submit" class="login-button">Sign In</button>
+        </form>
+        <div id="error-message" class="error-message">
+            Invalid username or password
+        </div>
+        <div id="success-message" class="success-message">
+            Login successful! Redirecting...
+        </div>
+        <a href="https://derm-platform-bot.cdb.com.ua" class="back-button">← Back to Home</a>
+    </div>
+
+    <script src="admin_script.js"></script>
+
+</body>
+</html>

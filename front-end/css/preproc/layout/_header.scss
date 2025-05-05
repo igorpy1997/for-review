@@ -1,0 +1,252 @@
+@use '../abstracts/mixins' as mxn;
+@use '../abstracts/variables'as var;
+
+html, body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  padding-top: 12px;
+  overflow-x: hidden;
+  background-color: var.$own-colors-light-blue-background;
+}
+
+header{
+  margin-bottom: 12px;
+}
+
+header .navbar{
+  width: calc(100% - 48px);
+  max-width: 1872px;
+  margin: 0 auto;
+  border-radius: 30px;
+  padding: 27px 24px 27px 24px;
+  background: var.$own-colors-white;
+
+  // Применяем стили с размера 992px (когда появляется бургер-меню)
+  @media (max-width: 992px) {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 18px 16px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 14px 12px;
+    border-radius: 20px;
+  }
+
+  .phone-number {
+
+    border-radius: 15px;
+    padding: 20px 33px;
+    background: var.$own-colors-blue;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+
+
+    &:hover {
+      opacity: 0.5;
+    }
+
+    @media (max-width: 1400px) {
+      padding: 16px 28px;
+    }
+
+    @media (max-width: 1200px) {
+      padding: 10px 14px;
+    }
+
+    // Изменяем стили с 992px, чтобы они соответствовали мобильному виду
+    @media (max-width: 992px) {
+      width: 315px;
+      margin: 15px auto 0;
+      padding: 12px 20px;
+      text-align: center;
+    }
+
+    a{
+      font-family: var.$font-family;
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 115%;
+      text-transform: uppercase;
+      color: var.$own-colors-white;
+      padding: 0 !important;
+      border: none;
+      transition: all 0.3s ease;
+
+      &:hover {
+        color: var.$own-colors-white;
+      }
+
+      @media (max-width: 1400px) {
+        font-size: 18px;
+      }
+
+      @media (max-width: 1200px) {
+        font-size: 20px;
+      }
+
+      @media (max-width: 992px) {
+        font-size: 18px;
+        display: block;
+        text-align: center;
+      }
+
+      @media (max-width: 768px) {
+        font-size: 16px;
+      }
+    }
+  }
+
+  .navbar-brand{
+    margin-right: 344.5px;
+
+    @media (max-width: 1600px) {
+      margin-right: 180px;
+    }
+
+    @media (max-width: 1400px) {
+      margin-right: 110px;
+    }
+
+    @media (max-width: 1200px) {
+      margin-right: 80px;
+    }
+
+    @media (max-width: 992px) {
+      margin-right: 0;
+    }
+
+    img {
+      @media (max-width: 1200px) {
+        max-width: 90%;
+      }
+
+      @media (max-width: 992px) {
+        max-width: 80%;
+      }
+    }
+  }
+
+  .navbar-nav{
+    display: flex;
+    justify-content: space-between;
+    gap: 42px;
+    border-radius: 15px;
+    padding: 17px 23px;
+    background: var.$own-colors-light-blue-background;
+
+    @media (max-width: 1600px) {
+      gap: 36px;
+    }
+
+    @media (max-width: 1400px) {
+      gap: 20px;
+      padding: 15px 20px;
+    }
+
+    @media (max-width: 1200px) {
+      gap: 15px;
+      padding: 15px 15px;
+    }
+
+    // Изменяем стили с 992px для меню бургера
+    @media (max-width: 992px) {
+      gap: 0;
+      padding: 0;
+      flex-direction: column;
+      margin-bottom: 0;
+      background: transparent;
+      width: 100%;
+    }
+
+    a{
+      padding: 0 !important;
+      font-family: var.$font-family;
+      font-weight: 500;
+      font-size: 20px;
+      text-transform: capitalize;
+      color: var.$own-colors-blue;
+      position: relative;
+      transition: color 0.3s ease;
+      // Добавляем управление текстом при разных разрешениях
+      white-space: nowrap; // Предотвращаем перенос текста
+      letter-spacing: normal; // Нормализуем межбуквенное расстояние
+
+
+      &::before {
+        display: none;
+      }
+
+      // Добавляем подчеркивание
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: var.$own-colors-blue;
+        transition: width 0.3s ease;
+      }
+
+      &:hover {
+        &::after {
+          width: 100%;
+        }
+      }
+
+      @media (max-width: 1400px) {
+        font-size: 19px;
+        // Фиксированное значение letter-spacing для этого разрешения
+        letter-spacing: 0.01em;
+      }
+
+
+      @media (max-width: 992px) {
+        font-size: 16px;
+        padding: 15px 0 !important;
+        display: block;
+        letter-spacing: normal; // Возвращаем обычное межбуквенное расстояние
+      }
+    }
+  }
+
+  .navbar-collapse {
+    @media (max-width: 992px) {
+      margin-top: 15px;
+      padding: 0;
+    }
+  }
+
+  .navbar-toggler {
+    @media (max-width: 992px) {
+      border: none;
+
+      &:focus {
+        box-shadow: none;
+      }
+    }
+  }
+
+  @media (max-width: 1200px) {
+    padding: 22px 20px;
+  }
+}
+
+/* Добавляем стили для разделителей между пунктами меню в бургер-версии */
+@media (max-width: 992px) {
+  header .navbar .navbar-nav .nav-item {
+    border-bottom: 1px solid rgba(0, 157, 201, 0.2);
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: rgba(0, 157, 201, 0.05);
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}

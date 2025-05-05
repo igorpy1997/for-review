@@ -1,0 +1,110 @@
+@use '../abstracts/mixins' as mxn;
+@use '../abstracts/variables'as var;
+
+
+.about-us {
+  width: calc(100% - 48px);
+  max-width: 1872px;
+  margin: 0 auto;
+  border-radius: 30px;
+  background: var.$own-colors-white;
+  margin-bottom: 12px;
+
+  h2{
+    font-family: var.$font-family;
+    font-weight: 500;
+    font-size: 64px; /* Начальный размер шрифта */
+    line-height: 90%;
+    letter-spacing: -0.07em;
+    color: var.$own-colors-blue;
+    margin-bottom: 16px;
+    padding-right: calc(13.55% + 0px); /* 105/775 = 13.55% */
+    text-align: start;
+    @media (max-width: 1800px) {
+      font-size: 56px;
+      padding-right: 100px;
+    }
+    @media (max-width: 1630px) {
+      font-size: 52px;
+      padding-right: 0;
+    }
+    @media (max-width: 1600px) {
+      font-size: 52px;
+      padding-right: 0;
+    }
+
+
+  }
+  p{
+    max-width: 444px;
+    text-align: start;
+    font-family: var.$font-family;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 125%;
+    letter-spacing: -0.07em;
+    color: var.$own-colors-blue;
+    margin-bottom: 12px;
+    padding-right: calc(13.5% + 0px);
+  }
+  a{
+    font-family: var.$font-family;
+    font-weight: 500;
+    font-size: 20px;
+    text-transform: capitalize;
+    color: var.$own-colors-blue;
+    text-decoration: none;
+    position: relative; // Добавляем относительное позиционирование
+
+    &:hover{
+      opacity: 50%;
+
+      &::after {
+        width: 100%; // При наведении линия расширяется до 100% ширины
+      }
+    }
+
+    &::after {
+      width: 100%;
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      height: 2px;
+      background-color: var.$own-colors-blue;
+      transition: width 0.3s ease;
+    }
+  }
+
+  .scientists-image {
+    background-image: url('../images/scientists.svg');
+    background-repeat: no-repeat;
+    background-size: contain; /* изменяем с cover на contain */
+    background-position: center; /* добавляем центрирование */
+    height: 0; /* убираем фиксированную высоту */
+    padding-bottom: 60%; /* создаем пропорциональную высоту от ширины */
+    margin-bottom: 12px;
+    width: 100%; /* обеспечиваем, что блок занимает всю доступную ширину */
+  }
+  .container-fluid .row .col-lg-6:nth-child(1){
+    background-image: url("../images/Group 9276.svg");
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: right;
+    padding-left: 24px;
+    padding-right: 0;
+    padding-top: 60px;
+    p{
+      font-family: var.$font-family;
+      font-weight: 500;
+      font-size: 16px;
+      letter-spacing: -0.07em;
+      color: var.$text-colors-light-blue;
+    }
+    }
+  .about-us-text {
+    padding: 60px calc(16.02% + 0px) 60px 0;
+  }
+
+
+}

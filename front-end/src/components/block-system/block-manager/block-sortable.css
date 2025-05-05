@@ -1,0 +1,107 @@
+/* Styles for draggable blocks */
+[draggable=true] {
+  user-select: none;
+  -webkit-user-drag: element;
+  position: relative;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Style for block during dragging */
+.dragging {
+  opacity: 0.6;
+  border: 2px dashed #4285f4 !important;
+  transform: scale(0.98);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+/* Style for top drop indicator */
+.drag-over-top {
+  border-top: 2px solid #4285f4;
+  padding-top: 8px;
+  margin-top: -8px;
+  position: relative;
+}
+
+.drag-over-top::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #4285f4;
+  z-index: 5;
+}
+
+/* Style for bottom drop indicator */
+.drag-over-bottom {
+  border-bottom: 2px solid #4285f4;
+  padding-bottom: 8px;
+  margin-bottom: -8px;
+  position: relative;
+}
+
+.drag-over-bottom::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #4285f4;
+  z-index: 5;
+}
+
+/* Style for drag handle */
+.block-drag-handle {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 24px;
+  height: 24px;
+  cursor: grab;
+  cursor: -webkit-grab;
+  z-index: 10;
+  opacity: 0.6;
+  transition: opacity 0.3s, transform 0.2s;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.block-drag-handle:hover {
+  opacity: 1 !important;
+  transform: scale(1.1);
+}
+
+.block-drag-handle:active {
+  cursor: grabbing;
+  cursor: -webkit-grabbing;
+}
+
+/* When grabbing handle */
+.block-drag-handle:active svg {
+  transform: scale(0.9);
+}
+
+.block-drag-handle svg {
+  transition: transform 0.2s;
+  width: 18px;
+  height: 18px;
+  color: #666;
+}
+
+/* Block animations */
+@keyframes blockHighlight {
+  0% { box-shadow: 0 0 0 rgba(66, 133, 244, 0); }
+  50% { box-shadow: 0 0 10px rgba(66, 133, 244, 0.5); }
+  100% { box-shadow: 0 0 0 rgba(66, 133, 244, 0); }
+}
+
+.block-reordered {
+  animation: blockHighlight 1s ease-in-out;
+}
